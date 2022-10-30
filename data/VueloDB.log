@@ -1,22 +1,2 @@
 /*C4*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C6*/SET SCHEMA PUBLIC
-DISCONNECT
-/*C7*/SET SCHEMA PUBLIC
-CREATE SCHEMA FACTURACION_3RO AUTHORIZATION SA
-create table Facturacion_3ro.Autor (oid varchar(32) not null, nombre varchar(50), primary key (oid))
-create table Facturacion_3ro.Categoria (oid varchar(32) not null, descripcion varchar(50), primary key (oid))
-create table Facturacion_3ro.Cliente (numero integer not null, codigoPostal integer, municipio varchar(20), provincia varchar(30), viaPublica varchar(30), nombre varchar(50), primary key (numero))
-create table Facturacion_3ro.DocumentoComercial (DTYPE varchar(31) not null, oid varchar(32) not null, anyo integer, fecha date, importeTotal numeric(19,2), iva numeric(19,2), numero integer, observaciones varchar(255), porcentajeIVA numeric(2,0), diasEntrega INTEGER DEFAULT 1, entregado BOOLEAN DEFAULT FALSE, cliente_numero integer not null, factura_oid varchar(32), primary key (oid))
-create table Facturacion_3ro.DocumentoComercial_detalles (DocumentoComercial_oid varchar(32) not null, cantidad integer not null, precioPorUnidad numeric(19,2), producto_numero integer)
-create table Facturacion_3ro.IMAGES (ID varchar(255) not null, GALLERY varchar(255), IMAGE varbinary(16777216), primary key (ID))
-create table Facturacion_3ro.OXDISCUSSIONCOMMENTS (id varchar(32) not null, comment clob(16777216), discussionId varchar(32), time timestamp, userName varchar(30), primary key (id))
-create table Facturacion_3ro.Producto (numero integer not null, descripcion varchar(50), fotos varchar(32), isbn varchar(13), observaciones varchar(255), precio numeric(19,2), autor_oid varchar(32), categoria_oid varchar(32), primary key (numero))
-create table Facturacion_3ro.TuPrimeraEntidad (id varchar(32) not null, descripcion varchar(50), fecha date, importe numeric(19,2), primary key (id))
-create index Facturacion_3ro.IDXbhlx4vunn24ym1tbrlgq8g30m on Facturacion_3ro.OXDISCUSSIONCOMMENTS (discussionId)
-alter table Facturacion_3ro.DocumentoComercial add constraint FKqxvhhtdl5x1bljcimyej4mksx foreign key (cliente_numero) references Facturacion_3ro.Cliente
-alter table Facturacion_3ro.DocumentoComercial add constraint FK4lhtu14i3f0y8m4ohuxww2b48 foreign key (factura_oid) references Facturacion_3ro.DocumentoComercial
-alter table Facturacion_3ro.DocumentoComercial_detalles add constraint FKgyn78bk9nimdbk5uxm7ioiib1 foreign key (producto_numero) references Facturacion_3ro.Producto
-alter table Facturacion_3ro.DocumentoComercial_detalles add constraint FKq37xaecvr7po697tmegcffoba foreign key (DocumentoComercial_oid) references Facturacion_3ro.DocumentoComercial
-alter table Facturacion_3ro.Producto add constraint FKmtkejrnklbkimttu99b9jqufw foreign key (autor_oid) references Facturacion_3ro.Autor
-alter table Facturacion_3ro.Producto add constraint FKc81rcy0vfdn5ewnap5scabhd3 foreign key (categoria_oid) references Facturacion_3ro.Categoria
