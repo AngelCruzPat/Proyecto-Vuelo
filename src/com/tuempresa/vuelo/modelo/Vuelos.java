@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 import org.openxava.calculators.*;
+import org.openxava.util.*;
 
 import lombok.*;
 
@@ -28,5 +29,15 @@ public class Vuelos extends Identificable{
 	@StringTime
 	@Column(length=5)
 	String hora;
+	
+	@PreRemove
+	private void validarPreBorrar() {
+	    if (ciudadDestino != null) {
+	        throw new javax.validation.ValidationException(
+	            XavaResources.getString(
+	                "no_puede_borrar_vuelo_con_destino"));
+	    }
+	}
+
 	
 }
