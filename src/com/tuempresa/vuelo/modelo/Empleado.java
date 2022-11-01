@@ -8,13 +8,13 @@ import lombok.*;
  
 @Entity @Getter @Setter
 @View(name="Simple",
-members="nombre;"
-		+ "apellido;" 
+	members="nombre, apellido" 
 )
-public class Persona extends Identificable{
-	
-	@Column(length=32) @Required
-	String nombre;
+public class Empleado extends Identificable{
+
+ 
+    @Column(length=64)
+    String nombre;
     
     @Column(length=64)
     String apellido;

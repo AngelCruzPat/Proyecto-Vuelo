@@ -11,16 +11,15 @@ public class Direccion {
     @Column(length = 32)
     String calle;
  
-    @Column(length = 5)
+    @Column(length = 32)
     String colonia;
  
-    @Column(length = 20)
+    @Column(length = 32)
     String municipio;
  
-    @Column(length = 30)
+    @Column(length = 32)
     String estado;
     
-    
-    
- 
+    @Column(length = 32)
+    String pais;
 }
