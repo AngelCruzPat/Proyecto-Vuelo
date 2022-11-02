@@ -1,6 +1,5 @@
 package com.tuempresa.vuelo.modelo;
 
-import java.sql.*;
 import java.time.*;
 
 import javax.persistence.*;
@@ -10,25 +9,24 @@ import org.openxava.calculators.*;
 
 import lombok.*;
 
-
 @Entity @Getter @Setter
-public class Vuelo extends Identificable{
+public class Vuelos extends Identificable{
 
+	
 	@Column(length=4)
     @DefaultValueCalculator(CurrentYearCalculator.class)
     int anyo;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-    @DescriptionsList
-    Pais pais;
+	@Column(length=32)
+	String ciudadOrigen;
 	
-	@Column(length=9)
-	String paisDestino;
+	@Column(length=32)
+	String ciudadDestino;
 	
 	LocalDate fecha;
 	
 	@StringTime
 	@Column(length=5)
-	Time hora;
+	String hora;
 	
 }

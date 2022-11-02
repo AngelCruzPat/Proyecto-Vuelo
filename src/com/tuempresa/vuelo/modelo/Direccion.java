@@ -2,8 +2,6 @@ package com.tuempresa.vuelo.modelo;
 
 import javax.persistence.*;
 
-import org.openxava.annotations.*;
-
 import lombok.*;
  
 @Embeddable
@@ -13,16 +11,15 @@ public class Direccion {
     @Column(length = 32)
     String calle;
  
-    @Column(length = 5)
+    @Column(length = 32)
     String colonia;
  
-    @Column(length = 20)
+    @Column(length = 32)
     String municipio;
  
-    @Column(length = 30)
+    @Column(length = 32)
     String estado;
     
-    @ManyToOne(fetch=FetchType.LAZY)
-    @DescriptionsList
-    Pais pais;
+    @Column(length = 32)
+    String pais;
 }

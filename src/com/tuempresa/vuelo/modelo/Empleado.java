@@ -7,7 +7,9 @@ import org.openxava.annotations.*;
 import lombok.*;
  
 @Entity @Getter @Setter
-
+@View(name="Simple",
+	members="nombre, apellido" 
+)
 public class Empleado extends Identificable{
 
  
