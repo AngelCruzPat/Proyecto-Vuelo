@@ -7,14 +7,12 @@ import org.openxava.annotations.*;
 import lombok.*;
  
 @Entity @Getter @Setter
-@View(name="Simple",
-members="nombre;"
-		+ "apellido;" 
-)
+
 public class Persona extends Identificable{
-	
-	@Column(length=32) @Required
-	String nombre;
+ 
+ 
+    @Column(length=64)
+    String nombre;
     
     @Column(length=64)
     String apellido;
@@ -23,7 +21,7 @@ public class Persona extends Identificable{
     @Column(length=32)
     String fotografia;
     
-    @Embedded
+    @Embedded @NoFrame
     private Direccion direccion;
 
 }

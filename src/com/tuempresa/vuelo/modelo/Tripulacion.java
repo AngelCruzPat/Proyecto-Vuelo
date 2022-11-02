@@ -15,8 +15,4 @@ public class Tripulacion extends Identificable {
 	@Column(length=6) 
 	int elementos;
 	
-	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@ElementCollection
-    @ReferenceView("Simple")
-    Empleado empleado;
 }
